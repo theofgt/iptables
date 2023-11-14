@@ -6,8 +6,12 @@
 
 #iptables -t nat -A POSTROUTING -o eth1 -j SNAT --to 172.32.4.100 #to be continued
 
-
 ####### Firewall rules #######
+
+#Default policy
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
 
 #Incoming traffic z-mail-ssh
 
