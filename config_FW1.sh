@@ -9,6 +9,10 @@
 
 ####### Firewall rules #######
 
+iptables -P FORWARD DROP
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+
 #Incoming traffic z-mail-ssh
 
 iptables -A FORWARD -p tcp --dport 993 -d 172.31.6.5 -j ACCEPT
@@ -45,7 +49,7 @@ iptables -A FORWARD -d 172.32.5.0/24 -j DROP
 
 #Outgoing traffic z-public
 
-20. iptables -A FORWARD -p tcp --dport 53 -s 172.32.5.3 -j ACCEPT  //faire celle-ci
+20. iptables -A FORWARD -p tcp --dport 53 -s 172.32.5.3 -j ACCEPT
 21. iptables -A FORWARD -p udp --dport 53 -s 172.32.5.3 -j ACCEPT
 22. iptables -A FORWARD -s 172.32.5.0/24 -j DROP
 
