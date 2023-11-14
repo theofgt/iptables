@@ -49,9 +49,9 @@ iptables -A FORWARD -d 172.32.5.0/24 -j DROP
 
 #Outgoing traffic z-public
 
-20. iptables -A FORWARD -p tcp --dport 53 -s 172.32.5.3 -j ACCEPT  //faire celle-ci
-21. iptables -A FORWARD -p udp --dport 53 -s 172.32.5.3 -j ACCEPT
-22. iptables -A FORWARD -s 172.32.5.0/24 -j DROP
+iptables -A FORWARD -p tcp --dport 53 -s 172.32.5.3 -j ACCEPT  //faire celle-ci
+iptables -A FORWARD -p udp --dport 53 -s 172.32.5.3 -j ACCEPT
+iptables -A FORWARD -s 172.32.5.0/24 -j DROP
 
 #Other
 
