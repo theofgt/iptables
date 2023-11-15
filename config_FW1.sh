@@ -6,12 +6,12 @@
 
 #iptables -t nat -A POSTROUTING -o eth1 -j SNAT --to 172.32.4.100 #to be continued
 
-
 ####### Firewall rules #######
 
-iptables -P FORWARD DROP
+#Default policy
 iptables -P INPUT DROP
 iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
 
 #Incoming traffic z-mail-ssh
 
@@ -49,9 +49,9 @@ iptables -A FORWARD -d 172.32.5.0/24 -j DROP
 
 #Outgoing traffic z-public
 
-20. iptables -A FORWARD -p tcp --dport 53 -s 172.32.5.3 -j ACCEPT
-21. iptables -A FORWARD -p udp --dport 53 -s 172.32.5.3 -j ACCEPT
-22. iptables -A FORWARD -s 172.32.5.0/24 -j DROP
+iptables -A FORWARD -p tcp --dport 53 -s 172.32.5.3 -j ACCEPT  
+iptables -A FORWARD -p udp --dport 53 -s 172.32.5.3 -j ACCEPT
+iptables -A FORWARD -s 172.32.5.0/24 -j DROP
 
 #Other
 
