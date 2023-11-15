@@ -4,6 +4,8 @@
 
 ####### Firewall rules #######
 
+iptables -F
+
 #Default policy
 
 iptables -P INPUT DROP
