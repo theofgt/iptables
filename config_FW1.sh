@@ -2,13 +2,21 @@
 # Rules for FW1 #
 #################
 
+iptables -F
+
 ####### NAT rules #######
 
-#iptables -t nat -A POSTROUTING -o eth1 -j SNAT --to 172.32.4.100 #to be continued
+#Postrouting
+
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+#Prerouting
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 22 -j DNAT --to-destination 172.31.6.6
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 25 -j DNAT --to-destination 172.31.6.5
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 993 -j DNAT --to-destination 172.31.6.5
 
 ####### Firewall rules #######
-
-iptables -F
 
 #Default policy
 iptables -P INPUT DROP
